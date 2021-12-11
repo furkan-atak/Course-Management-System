@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CourseManagementSystem.Models.Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<i class="fa fa-university fa-4x"></i>
+<h1>Departments</h1>
+
+<p>
+    <a style="color:#343a40 !important;" asp-action="Create"><i class="fa fa-plus-square fa-1x"></i> Create Department</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dean)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dean)
+            </td>
+            <td>
+                <a class="btn" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a> |
+                <a class="btn" asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-info-circle"></i></a> |
+                <a class="btn" asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

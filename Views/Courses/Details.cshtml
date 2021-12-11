@@ -1,0 +1,95 @@
+﻿@model CourseManagementSystem.Models.Course
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<i class="fa fa-info-circle fa-4x"></i>
+<h1>Details</h1>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Credit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Credit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Place)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Place)
+        </dd>
+        <dt class="col-sm-2">
+            <p>Department</p>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeptIdFkNavigation.DeptName)
+        </dd>
+        <dt class="col-sm-2">
+            <p>Teacher</p>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Teaches.Select(t => t.TeacherIdFkNavigation).Select(t => t.Name).FirstOrDefault()
+        </dd>
+        <dt class="col-sm-2">
+            <p>Num Of Students In Course</p>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Takes.Select(t => t.StudentIdFkNavigation).Count()
+        </dd>
+    </dl>
+</div>
+<div>
+    <a style="color:#343a40 !important;" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-edit"></i> Edit</a> |
+    <a style="color:#343a40 !important;" asp-action="Index"><i class="fas fa-arrow-circle-left"></i> Back to List</a>
+</div>
+<br>
+<h4>Students Of The Course</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                Department
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Takes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentIdFkNavigation.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentIdFkNavigation.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentIdFkNavigation.DeptIdFkNavigation.DeptName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

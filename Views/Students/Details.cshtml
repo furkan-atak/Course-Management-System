@@ -1,0 +1,96 @@
+﻿@model CourseManagementSystem.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<i class="fa fa-info-circle fa-4x"></i>
+<h1>Details</h1>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Department
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeptIdFkNavigation.DeptName)
+        </dd>
+        <dt class="col-sm-2">
+            Number Of Courses Taken
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Takes.Count
+        </dd>
+        <dt class="col-sm-2">
+            Total Akts Value
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.totalAkts
+        </dd>
+    </dl>
+</div>
+<div>
+    <a style="color:#343a40 !important;" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-edit"></i>Edit Student</a> |
+    <a style="color:#343a40 !important;" asp-action="Index"><i class="fa fa-arrow-circle-left"></i>Back to List</a>
+</div>
+<br>
+<h4>List Of Courses Student Take</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Semester
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Grade
+            </th>
+            <th>
+                Course
+            </th>
+            <th>
+                Student
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Takes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseIdFkNavigation.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentIdFkNavigation.FullName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

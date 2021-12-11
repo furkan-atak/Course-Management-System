@@ -1,0 +1,44 @@
+﻿@model CourseManagementSystem.Models.Teach
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<i class="fa fa-info-circle fa-4x"></i>
+<h1>Details</h1>
+
+<div>
+    <h4>Teach</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Semester)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Semester)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseIdFkkNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CourseIdFkkNavigation.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TeacherIdFkNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TeacherIdFkNavigation.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a style="color:#343a40 !important;" class="btn" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-edit"></i>Edit</a> |
+    <a style="color:#343a40 !important;" class="btn" asp-action="Index"><i class="fa fa-arrow-circle-left"></i>Back to List</a>
+</div>

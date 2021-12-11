@@ -1,0 +1,84 @@
+﻿@model CourseManagementSystem.Models.Teacher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<i class="fa fa-info-circle fa-4x"></i>
+<h1>Details</h1>
+
+<div>
+    <h4>Teacher</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dept)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dept.DeptName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a style="color:#343a40 !important;" class="btn" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-edit"></i>Edit</a> |
+    <a style="color:#343a40 !important;" class="btn" asp-action="Index"><i class="fa fa-arrow-circle-left"></i>Back to List</a>
+</div>
+
+<h4>Courses Of The Teacher</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Credit
+            </th>
+            <th>
+                Place
+            </th>
+            <th>
+                Teacher Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Teaches)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseIdFkkNavigation.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseIdFkkNavigation.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseIdFkkNavigation.Credit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseIdFkkNavigation.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherIdFkNavigation.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

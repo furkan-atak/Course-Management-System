@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Course Management System </h1>
+    <p> Both managing by student and teacher is enable. </p>
+</div>
+<form>
+    <div style="background-color: paleturquoise;" class="card">
+        <div class="card-body">
+            <h3 class="card-title">Computer Engineering</h3>
+            <p class="card-text">
+                Computer Engineering uses principles from Computer Science and Electrical Engineering to create hardware
+                and firmware which are used in a wide range of areas
+            </p>
+            @{int id = 1;}
+            <a asp-route-id="@id" asp-controller="Departments" asp-action="Details" class="btn btn-primary">Go To Department</a>
+        </div>
+    </div>
+    <div style="background-color: bisque;" class="card">
+        <div class="card-body">
+            <h3 class="card-title">Civil Engineering</h3>
+            <p class="card-text">
+                Civil engineering is a professional engineering discipline that deals with the design,
+                construction, and maintenance of the physical and naturally built ...
+            </p>
+            @{int ciId = 2;}
+            <a asp-route-id="@ciId" asp-controller="Departments" asp-action="Details" class="btn btn-primary">Go To Department</a>
+        </div>
+    </div>
+    <div style="background-color: palevioletred;" class="card">
+        <div class="card-body">
+            <h3 class="card-title">Biomedical Engineering</h3>
+            <p class="card-text">
+                Biomedical engineering is the application of the principles and problem-solving
+                techniques of engineering to biology and medicine.
+            </p>
+            @{int bioId = 3;}
+            <a asp-route-id="@bioId" asp-controller="Departments" asp-action="Details" class="btn btn-primary">Go To Department</a>
+        </div>
+    </div>
+    <div style="background-color: cadetblue;" class="card">
+        <div class="card-body">
+            <h3 class="card-title">Electrical & Electronics Engineering</h3>
+            <p class="card-text">
+                lectrical and electronics engineering, the branch of engineering concerned with the
+                practical applications of electricity in all its forms
+            </p>
+            @{int eeId = 4;}
+            <a asp-route-id="@eeId" asp-controller="Departments" asp-action="Details" class="btn btn-primary">Go To Department</a>
+        </div>
+    </div>
+    <div style="background-color: gainsboro;" class="card">
+        <div class="card-body">
+            <h3 class="card-title">Mechanical  Engineering</h3>
+            <p class="card-text">
+                Mechanical engineering is an engineering branch that combines engineering
+                physics and mathematics principles with materials science to design, analyze, manufacture, and maintain mechanical systems
+            </p>
+            @{int mecId = 5;}
+            <a asp-route-id="@mecId" asp-controller="Departments" asp-action="Details" class="btn btn-primary">Go To Department</a>
+        </div>
+    </div>
+    <div style="background-color: darkslategrey;" class="card">
+        <div class="card-body">
+            <h3 class="card-title">AeroSpace  Engineering</h3>
+            <p class="card-text">
+                Aerospace engineering is the primary field of engineering concerned with the design, development, testing, and production of aircraft,
+                spacecraft, and related systems and equipment
+            </p>
+            @{int aeId = 6;}
+            <a asp-route-id="@aeId" asp-controller="Departments" asp-action="Details" class="btn btn-primary">Go To Department</a>
+        </div>
+    </div>
+</form>

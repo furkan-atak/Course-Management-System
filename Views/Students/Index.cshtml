@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CourseManagementSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["deleteResult"] != null)
+{
+
+    <div class="alert alert-danger" role="alert">
+        @TempData["deleteResult"]
+    </div>
+
+}
+<i class="fa fa-user-graduate fa-4x"></i>
+<h1>Students</h1>
+
+<p>
+    <a style="color:#343a40 !important;" asp-action="Create"><i class="fa fa-plus-square fa-1x"></i> Create Student</a>
+</p>
+<br />
+<form asp-action="SearchStudent">
+    <input type="text" name="search" id="search" />
+    <button type="submit" style="background-color:#343a40 !important; color:white" class="btn"><i class="fa fa-search text-white"></i>Search Student</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                Department
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeptIdFkNavigation.DeptName)
+                </td>
+                <td>
+                    <a style="color:#343a40 !important;" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a> |
+                    <a style="color:#343a40 !important;" asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-info-circle"></i></a> |
+                    <a style="color:#343a40 !important;" asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a> |
+                    <a style="color:#343a40 !important;" asp-area="" asp-route-id="@item.Id" asp-controller="Takes" asp-action="Create1"><i class="fa fa-plus-circle"></i>Course</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

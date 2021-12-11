@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CourseManagementSystem.Models.Teach>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Teachers Of Courses</h1>
+
+<p>
+    <a style="color:#343a40 !important;" asp-action="Create"><i class="fa fa-plus-square fa-1x"></i> Assign A Course To A Teacher</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseIdFkkNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherIdFkNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semester)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseIdFkkNavigation.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherIdFkNavigation.Name)
+            </td>
+            <td>
+                <a class="btn" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a> |
+                <a class="btn" asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-info-circle"></i></a> |
+                <a class="btn" asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
