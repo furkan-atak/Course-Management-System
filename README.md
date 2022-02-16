@@ -1,5 +1,5 @@
 # Course-Management-System
-A system that both students and teachers can manage their courses. Using C# .NET And Razor Pages
+A server side project for a system that both students and teachers can manage their courses and course related issues. Using C# .NET And Razor Pages
 
 
 ![Course](https://user-images.githubusercontent.com/72786435/145684922-107b9d76-fbcd-450f-9b6c-e32dbf6a62a5.JPG)
